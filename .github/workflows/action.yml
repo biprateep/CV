@@ -2,9 +2,22 @@
 # The latest compiled pdf is at available at e.g.
 # https://github.com/dgerosa/reponame/blob/build/filename.pdf
 # Davide Gerosa (2021) https://github.com/dgerosa
+# Updated by Biprateep (2022) Dey to deploy modern CV
 
-name: writeapaper
-on: [push]
+name: Compile and deploy latex 
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel  
+
 jobs:
   paper:
     runs-on: ubuntu-latest
@@ -16,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install TeXlive
-        run: sudo apt-get update && sudo apt-get install texlive texlive-publishers texlive-science latexmk cm-super
+        run: sudo apt-get update && sudo apt-get install texlive-full texlive-publishers texlive-science latexmk cm-super
       - name: LaTeX compile
         working-directory: ${{ env.DIR }}
         #run: latexmk -pdf -bibtex ${{ env.FILE }}
