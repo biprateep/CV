@@ -22,8 +22,8 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
-\documentclass[10pt,a4paper,roman]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\PassOptionsToPackage{colorlinks=true,linkcolor=gray,filecolor=blue, urlcolor=blue,pdfpagemode=FullScreen,pdftitle={Biprateep Dey's CV},}{hyperref}
+\documentclass[10pt,a4paper,roman,]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
 \moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
 \moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
@@ -33,10 +33,31 @@
 %\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
 \usepackage{fontawesome}
+\usepackage{academicons}
 \usepackage{etaremune}
 \usepackage{array}
+\usepackage{longtable}
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+
+%%%%%%USE THIS TO HAVE PAGE NUMBERS %%%%
 \usepackage{lastpage}
-\rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ of \pageref{LastPage}}}
+% \rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ of \pageref{LastPage}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\urlstyle{same}
+
+%Definition for a custom \mysubsection class
+\makeatletter
+\NewDocumentCommand{\mysubsection}{sm}{%
+  \par\addvspace{1ex}%
+  \phantomsection{}% reset the anchor for hyperrefs
+  \addcontentsline{toc}{subsection}{#2}%
+  {\strut\raggedleft\raisebox{\baseletterheight}{\color{color1}\rule{0.5\hintscolumnwidth}{0.95ex}}\quad}{\strut\subsectionstyle{#2}}%
+  \vspace{0.2cm}\par\nobreak\addvspace{.5ex}\@afterheading}% to avoid a pagebreak after the heading
+\makeatother
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION SECTION
 %----------------------------------------------------------------------------------------
@@ -52,7 +73,10 @@
 %\fax{(000) 111 1113}
 \email{biprateep@pitt.edu}
 
-\homepage{biprateep.github.io} 
+\homepage{biprateep.github.io}
+\newcommand*\orcidsocialsymbol{{\aiOrcid~}}
+\social[orcid][https://orcid.org/0000-0002-5665-7912]{0000-0002-5665-7912}
+\social[github]{biprateep} 
 
 %----------------------------------------------------------------------------------------
 
@@ -65,11 +89,13 @@
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-\cventry{2018-present}{PhD. Candidate}{Dept. of Physics and Astronomy, University of Pittsburgh}{Pittsburgh, PA, USA}{}{\textbf{Advisors:} Prof.\ Jeff Newman and Prof.\ Brett Andrews}
+\cventry{2018-present}{Ph.D. Candidate}{Department of Physics and Astronomy, University of Pittsburgh}{Pittsburgh, Pennsylvania, USA}{(expected graduation: July 2024)}
+{\textbf{Thesis Title:} \textrm{Photometric Redshifts for the Next-Generation of Sky Surveys} \\
+\textbf{Advisors:} Prof.~Jeff Newman and Prof.~Brett Andrews}
 
-\cventry{2020}{M.S.\ in Physics}{University of Pittsburgh}{Pittsburgh, PA, USA}{}{}
+\cventry{2020}{M.S.~in Physics}{University of Pittsburgh}{Pittsburgh, Pennsylvania, USA}{}{}
 
-\cventry{2018}{Integrated MSc.\ in Physics}{National Institute of Science  Education and Research (NISER)}{Bhubaneswar, Odisha, India}{}{\textbf{Thesis Title:} \textrm{Constructing predictors for HI mass in galaxies} \\ \textbf{Advisor:} Prof.\ Nishikanta Khandai}
+\cventry{2018}{Integrated B.Sc.-M.Sc.\ in Physics}{National Institute of Science Education and Research (NISER)}{Bhubaneswar, Odisha, India}{}{\textbf{Thesis Title:} \textrm{Constructing predictors for HI mass in galaxies} \\ \textbf{Advisor:} Prof.\ Nishikanta Khandai}
 
  % Arguments not required can be left empty
 
@@ -79,37 +105,13 @@
 % RESEARCH EXPERIENCE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Research}
-\cventry{2019-present}{Photometric redshift estimation using deep learning}{}{with Prof.\ Jeff Newman and Prof.\ Brett Andrews at the University of Pittsburgh, Pittsburgh, USA}{}{\begin{itemize}
-\item{Developed a deep neural network based algorithm to incorporate morphological information for galaxy photometric redshifts.}
-\item{Developing deep learning based algorithms for well calibrated photometric redshift PDFs.}
-\end{itemize}}
-
-\cventry{2019-present}{Target selection and validation for the Dark Energy Spectroscopic Instrument}{}{with Prof.\ Jeff Newman and the DESI Collaboration at the University of Pittsburgh, Pittsburgh, USA}{}{\begin{itemize}
-\item{Studied effects of observing systematics on DESI LRG Target selection.}
-\item{Developed a low redshift filler sample to improve estimates of cosmological constraints.}
-\item{Have worked on other aspects of the survey like developing bad pixel masks for the CCDs and inspection of spectroscopic data quality.}
-\end{itemize}}
-
-\cventry{2017-18}{Studying population of galaxies that contribute to the HI mass function}{}{with Prof.\ Nishikanta Khandai at National Institue of Science Education and Research, Bhubaneswar, India}{}{ \begin{itemize}
-\item{Studied the relation between properties of galaxies derived from optical and HI mass emission}
-\end{itemize}}
-
-\cventry{2017}{Exploring the star formation law using variable selection}{}{with Prof.\ Eric Rosolowsky at the University of Alberta, Edmonton, Canada}{}{ \begin{itemize}
-\item{Used machine learning based variable selection methods on data from the EDGE-CALIFA survey to expand the Kennicut-Schmidt law and make it robust and nearly universal.}
-\end{itemize}}
+\section{Research Interests}
+\cventry{}{Photometric Redshifts of Galaxies; Machine Learning, Statistics, and Uncertainty Quantification for Astrophysics and Cosmology; Galaxy Formation and Evolution}{}{}{}{}
 
 
-\cventry{2016-18}{ Search for Pulsars and Transients using the upgraded GMRT}{}{with Prof. Yashwant Gupta at the National Centre for Radio Astrophysics, TIFR, Pune, India}{}
-{\begin{itemize}
-\item Worked on developing a GPU based fully real time radio transient detection pipeline for the u\textsc{GMRT}. 
-\item Developed software for survey observation planning and management.
-\end{itemize}}
-%\cventry{}{semester lab}{Guide,at}{ \textbf{title } \\ abstract}{}{}
+\cventry{\textbf{Publications:}}{\small 4 lead author, 4 significant contributing author, and 18 contributing author \normalfont(list attached)}{}{}{}{}
+\cventry{\textbf{Presentations:\ }}{\ \small 20 invited, 18 contributed \normalfont(list attached)}{}{}{}{}
 
-
-
-%\cventry{Time date}{semester lab}{Guide,at}{ \textbf{title } \\ abstract}{}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,119 +119,168 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Awards and Honors}
-\cventry{2022}{Andrew Mellon Predoctoral Fellowships}{}{Funding for year long research at the Univ. of Pittsburgh}{}{}
-\cventry{2022}{Zaccheus Daniel Predoctoral Fellowship}{}{Funding for Summer term research at the Univ. of Pittsburgh}{}{}
+\cventry{2023}{``Builder'' of the Dark Energy Spectroscopic Instrument (DESI) Collaboration}{}{Builder status is awarded to DESI members in recognition of a long engagement and a significant contribution to the collaboration infrastructure and service work.}{}{}
+\cventry{2023}{American Physical Society Topical Group on Data Science IMPACT Award for Excellence in Graduate Research}{}{}{}{}
+\cventry{2022}{LSST Corporation Enabling Science Fellowship}{}{Funding to attend the 2022 Rubin Observatory's Project and Community Workshop}{}{}
+\cventry{2022 - 23}{Andrew Mellon Predoctoral Fellowships}{}{Funding for year long research at the Univ. of Pittsburgh}{}{}
+\cventry{2022}{Zaccheus Daniel Predoctoral Fellowship}{}{Funding for summer term research at the Univ. of Pittsburgh}{}{}
 \cventry{2021}{PITT-PACC Fellowship}{}{Funding for fall term research at the Univ. of Pittsburgh}{}{}
 \cventry{2017}{MITACS Globalink Research Fellowship}{}{Funding for summer research at the Univ. of Alberta}{}{}
 
-\cventry{2014-2018}{Kishore Vaigyanik Protsahan Yojana (KVPY) Fellowship}{ Dept. of Science and Tech., Govt. of India}{}{Scholarship for undergraduate studies and research internships}{}
-\cventry{2013-2014}{INSPIRE Fellowship}{Dept. of Science and Tech., Govt. of India}{}{Scholarship for undergraduate studies}{}
+\cventry{2014 - 2018}{Kishore Vaigyanik Protsahan Yojana (KVPY) Fellowship}{ Dept. of Science and Tech., Govt. of India}{}{Scholarship for undergraduate studies and research internships}{}
+\cventry{2013 - 2014}{INSPIRE Fellowship}{Dept. of Science and Tech., Govt. of India}{}{Scholarship for undergraduate studies}{}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Grants, telescope and computation time
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Telescope/computational grant/Money}
+% \cventry{2022}{LSSTC Enabling science grant}{}{}{}{}
+% \cventry{2022}{Neocortex}{}{}{}{}
+% \cventry{2022}{ACCelerate Money}{}{}{}{}
+% \cventry{2022}{HST proposal with David}{}{}{}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Observing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Observing Experience}
-\cvlistitem{10 nights using the Dark Energy Spectroscopic Instrument at Mayall 4-m telescope.}
-\cvlistitem{50 hours with the Giant Metre-wave Radio telescope to search for Pulsars and radio transients}
+% \section{Observing Experience}
+% \cvlistitem{10 nights using the Dark Energy Spectroscopic Instrument at Mayall 4-m telescope.}
+% \cvlistitem{50 hours with the Giant Metre-wave Radio telescope to search for Pulsars and radio transients}
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Teaching
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Teaching}
-\cventry{Summer 2021}{AstroPGH-TAMU Bootcamp}{}{Presented two lectures on introductory Numpy}{}{}
-\cventry{Summer 2020}{AstroPGH Bootcamp}{}{Presented three lectures on introductory and advanced Numpy}{}{}
-\cventry{Spring 2019}{Teaching Assistant}{PHYS 0110: Introduction to Physics 1
-}{with Prof.\ Matteo Broccio and Brian Pardo at Univ. of Pittsburgh}{}{}
-\cventry{Fall 2018}{Teaching Assistant}{ASTRON0088: From Stonehenge to Hubble}{with Prof.\ Carles Badenes and Prof.\ Sandhya Rao at Univ. of Pittsburgh}{}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Service
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
 \section{Leadership \& Service}
-\cventry{2021 - present}{Chairperson}{}{DESI Committee for Early Carreer Scientists}{}{}
-\cventry{2020 - present}{Member}{}{DESI Outreach Committee}{}{}
+\cventry{2023}{Member}{}{LSST-DESC Collaboration Council Nominating Committee}{}{}
+\cventry{2023 - present}{Research Mentor}{}{Research Supervisor for Emma R. Moran, undergraduate student at Univ. of Pittsburgh}{}{} %Name: Emma Moran
+\cventry{2023 - present}{Full Member}{}{LSST Dark Energy Science Collaboration}{}{}
+\cventry{2023}{Reviewer}{}{International Conference on Machine Learning (ICML) Synergy of Scientific and Machine Learning Modeling}{}{}
+\cventry{2023}{Co-Chair}{}{DESI photo-$z$ Topical Group}{}{}
+\cventry{2022}{Reviewer}{}{Neural Information Processing Systems (NeurIPS) Machine Learning and the Physical Sciences}{}{}
+\cventry{2022}{Chair}{}{LSST-DESC Collaboration Council Nominating Committee}{}{}
+\cventry{2022 - 2023}{Graduate Student Mentor}{}{Mentor for 5 incoming students at the Dept.\ of Physics and Astronomy, University of Pittsburgh}{}{}
+\cventry{2022 - 2023}{Member}{}{DESI Committee for Early Career Scientists}{}{}
+\cventry{2021 - 2022}{Chairperson}{}{DESI Committee for Early Career Scientists}{}{}
+\cventry{2020 - 2022}{Member}{}{DESI Outreach Committee}{}{}
 \cventry{2020 - 2021}{Graduate Student Mentor}{}{Mentor for 3 incoming students at the Dept.\ of Physics and Astronomy, University of Pittsburgh}{}{}
-\cventry{2020 - 2021}{Coordinator}{}{Astrosnacks, Dept.\ of Physics and Astronomy, University of Pittsburgh}{}{}
+\cventry{2020 - 2021}{Coordinator}{}{Astrosnacks, Dept.\ of Physics and Astronomy, University of Pittsburgh}{}{Organized student driven talk and tutorial series}
 \cventry{2020 - 2021}{Secretary}{}{Executive Committee, Bengali Association of Pittsburgh}{}{}
-\cventry{2019-2021}{Coordinator}{}{Astronomy on Tap-Pittsburgh}{}{}
+\cventry{2019 - 2021}{Coordinator}{}{Astronomy on Tap, Pittsburgh}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Telescope and Computing time
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Awarded Super-computing Time}
+\cventry{2023}{Perlmutter Supercomputer at NERSC}{Making the Largest Map of Our Universe}{\textbf{8000 GPU Hours}}{PI: \textbf{B.~Dey}, Co-I: J.~Newman, B.~Andrews}{}
+\cventry{2022}{Neocortex (Cerebras Wafer Scale Engine) at Pittsburgh Supercomputing Center }{Making the Largest Map of Our Universe}{\textbf{500 machine hours}}{PI: \textbf{B.~Dey}, Co-I: J.~Newman, B.~Andrews, J.~Rajasegaran}{}
+
+\section{Awarded Telescope Time}
+\cventry{2023}{Dark Energy Spectroscopic Instrument (DESI)}{Testing ELG Selections for DESI-2}{\textbf{18k fiber hours}}{PI: J. Newman, Co-I: \textbf{B. Dey} and others}{}
+
+\cventry{2023}{Dark Energy Spectroscopic Instrument (DESI)}{Four in one: A consolidated program for DESI-2 and DESI-1b science cases in the COSMOS field}{\textbf{5k fiber hours}}{PI: \textbf{B.~Dey}, Co-PI: A.~Leauthaud, J.~Newman, R.~Wechsler, Y.~Mao}{}
+
+\cventry{2022}{Dark Energy Spectroscopic Instrument (DESI)}{DESI-2 for Deep Spectroscopic Samples for LSST Photo-$z$’s}{\textbf{6k fiber hours}}{PI: \textbf{B.~Dey}, Co-I: J.~Newman, B.~Andrews, R.~Zhou,J.~Myles, J.~McCullough, D.~Gruen, N.~Weaverdyck}{}
+
+\cventry{2022}{Hubble Space Telescope Cycle 30 SNAP Proposal}{Post-starbursts from DESI: Timing quenching and morphological transformation at $1 < z < 1.3$}{\textbf{409 Orbits}}{PI: D. Setton, Co-I: \textbf{B. Dey} and others}{}
+
+\section{Successful Funding Proposals}
+\cventry{2023}{Nancy Grace Roman Space Telescope Research and Support Participation Opportunities}{Exploiting Deep Learning to Improve Roman Photometric Redshifts}{\textbf{$\sim$\$219k}}{PI: J. Newman, Co-I: \textbf{B. Dey} and others}{}
+
+\cventry{2023}{Nancy Grace Roman Space Telescope Research and Support Participation Opportunities}{A Statistical Framework for Optimizing Roman Spectroscopic Training Sets}{\textbf{$\sim$\$219k}}{PI: J. Newman, Co-I: \textbf{B. Dey} and others}{}
+
+\cventry{2022}{Hubble Space Telescope Cycle 30 SNAP}{Post-starbursts from DESI: Timing quenching and morphological transformation at $1 < z < 1.3$}{\textbf{$\sim$\$203k}}{PI: D. Setton, Co-I: \textbf{B. Dey} and others}{}
+
+\cventry{2021}{2022 ACCelerate Creativity + Innovation Festival}{}{Secured funding (\textbf{$\sim$\$12K}) from the University of Pittsburgh and the Atlantic Coast Conference (ACC) to produce a museum exhibit on \textit{Making the largest Maps of our Universe}}{\textbf{PI: B. Dey}, Co-I: J. Newman}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Teaching
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+\section{Teaching}
+\cventry{Summer 2022}{AstroPGH Bootcamp}{}{Presented two lectures on Astropy}{}{}
+\cventry{Summer 2021}{AstroPGH-TAMU Bootcamp}{}{Presented two lectures on introductory Numpy}{}{}
+\cventry{Summer 2020}{AstroPGH Bootcamp}{}{Presented three lectures on introductory and advanced Numpy}{}{}
+\cventry{Spring 2019}{Teaching Assistant}{PHYS 0110: Introduction to Physics 1}{with Prof.~Matteo Broccio and Brian Pardo at Univ. of Pittsburgh}{}{}
+\cventry{Fall 2018}{Teaching Assistant}{ASTRON0088: From Stonehenge to Hubble}{with Prof.~Carles Badenes and Prof.~Sandhya Rao at Univ. of Pittsburgh}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SOFTWARE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Software}
+\begin{center}
+    \textit{\small(List of software packages I am the primary developer of)\\}
+\end{center}
+
+\cventry{\faGithub}{\texttt{\href{https://github.com/lee-group-cmu/Cal-PIT}{Cal-PIT}}}{\small Python package to produce, diagnose and recallibrate PDFs to ensure conditional coverage}{}{}{}
+\cventry{\faGithub}{\texttt{\href{https://github.com/desihub/desigal}{desigal}}}{\small Python package providing standardized utilities to use DESI spectra for studies of galaxies}{}{}{}
+\cventry{\faGithub}{\texttt{\href{https://github.com/biprateep/spline_basis}{spline\_basis}}}{\small Python package \texttt{B-spline} and \texttt{I-spline} basis functions to represent PDFs}{}{}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Outreach
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \clearpage
 \section{Outreach}
-\begin{tabular}{m{2.4cm} m{0.3cm} m{15cm}}
- & & \begin{etaremune}\item \textit{How Stars Helped to Build Human Civilizations}. Biophilia Pittsburgh at the Phipps Conservatory and Botanical Gardens, Pittsburgh, November 2020.
+
+ \begin{etaremune}[leftmargin=40pt,labelsep=10pt]
+ \item \textit{Making the Largest Maps of Our Universe}. Produced an exhibit for the 2022 ACCelerate Creativity + Innovation Festival at the Smithsonian National Museum of American History, April 2022. Secured funding of $\sim$\$10,000. Event attended by more than 10,000 visitors over 3 days. 
+ \item \textit{How Stars Helped to Build Human Civilizations}. Biophilia Pittsburgh at the Phipps Conservatory and Botanical Gardens, Pittsburgh, November 2020.
 \item \textit{Demystifying Research Internships Abroad: Mitacs Globalink Research Fellowship}. Student Development
 Council Talk Series, IISER Bhopal, September 2020.
 \item \textit{Mapping the Universe using Sky Surveys}. NISER Astronomy Club Alumni Talk, National Institute of Science Education and Research, August 2020.
 \item \textit{Tutor for DESI High: Enabling high school students to use data from DESI} at the 2020 Bay Area Science Festival, 2021 North Carolina Science Festival, 2021 Boston Science Festival, and DESI High@Nepal 2021.
 \end{etaremune}
-\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Publications
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{List of Publications}
+\begin{center}
+ADS profile with an up-to-date citation record can be found \href{https://ui.adsabs.harvard.edu/search/p_=0&q=orcid\%3A0000-0002-5665-7912&sort=date\%20desc\%2C\%20bibcode\%20desc}{here.} \\
+% \href{https://orcid.org/0000-0002-5665-7912}{\textcolor{orcidlogocol}{\aiOrcid} orcid.org/0000-0002-5665-7912}\\
+    \textit{(4 lead author, 4 significant contributing author, and 18 contributing author, 1 in prep)\\}
+    
+    
+
+\end{center}
+
+\input{publications}
+% \input{pub_with_contribution}
+
+% \clearpage
+% \section{List of Relevant Publications with Contributions Described}
+% \begin{center}
+% ADS profile list of all publications with an up-to-date citation record can be found \href{https://ui.adsabs.harvard.edu/search/p_=0&q=orcid\%3A0000-0002-5665-7912&sort=date\%20desc\%2C\%20bibcode\%20desc}{here.} \\
+%     \textit{(Summary: 4 lead author, 4 significant contributing author, and 18 contributing author, 1 in prep)\\}
+% \end{center}
+
+% \input{pub_major}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Talks and Presentations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Presentations}
-\begin{tabular}{m{2.4cm} |m{0.3cm} m{15cm}}
- \emph{Invited} & &  \begin{etaremune}
-    \item \textit{Photometric Redshifts for Next Generation Sky Surveys}. STAtistical Methods for the Physical Sciences (STAMPS) meeting, Carnegie Mellon University, USA, February 2022.
-    \item \textit{Photometric Redshifts using Interpretable Deep Capsule Networks}. Institute seminar, Inter-University Centre for Astronomy and Astrophysics (IUCAA), India,  December 2021.
-     \item \textit{Capsule Networks: An Astronomer's Perspective}. Break-out session on Deep Learning, Statistical Challenges in Modern Astronomy (SCMA) VII,  June 2021.
-    \item \textit{Reducing Photometric Redshift Outliers with Deep Learning}. STAtistical Methods for the Physical Sciences (STAMPS) meeting, Carnegie Mellon University, USA, April 2020.
-\end{etaremune}
-\end{tabular}
+\clearpage
+\section{List of Presentations}
+\begin{center}
+    \textit{(20 Invited and 18 Contributed Presentations)\\}
+\end{center}
+\mysubsection{Invited}
+\input{invited_talks}
  
 % \vspace{0.5cm}
+\clearpage
+\mysubsection{Contributed}
+\input{contributed_talks}
 
-\begin{tabular}{m{2.4cm} |m{0.3cm} m{15cm}} 
-% \\\multicolumn{2}{c}{} \\
- \emph{Contributed} & &
- \begin{etaremune}
- 
-%  Photometric Redshifts from SDSS Images with an Interpretable Deep Capsule Network, DESC Photo-z telecon, February 2022
-% Re-calibrating Photometric Redshift Probability Distributions Using Feature-space Regression, DESC Photo-z telecon March 2022
-%%%%% TO ADD: BErkeley lab, UCSC, Princeton, DESC-v3, ICML4astro, LSST PCW
-%%%%ACCELERATE
 
-    \item \textit{Recalibrating Probability Density Estimates Using Feature-Space Regression}. Refereed talk at the Symposium on Data Science and Statistics, Pittsburgh, USA, June 2022.
-    
-    \item \textit{Re-calibrating Photometric Redshift Probability Distributions Using Feature-space Regression}. Poster and Talk at the Fourth Workshop on Machine Learning and the Physical Sciences (NeurIPS 2021), December 2021.
-    \item \textit{Interpretable Photometric Redshifts using Deep Capsule Networks}. Talk at the 2nd Symposium on Artificial Intelligence for Science, Industry, and Society (AISIS 2021), October 2021.
-     \item \textit{Latent Variable Models: Principal Components}. Talk at AstroPGH-TAMU Bootcamp 2021.
-    \item \textit{Interpretable Photometric Redshifts with a DeepCapsule Network}. Poster at Statistical Challenges in Modern Astronomy VII, June 2021.
-    \item \textit{Mapping the Universe using Sky Surveys}. Astrosnacks presentation, University of Pittsburgh, July 2020.
-    \item \textit{Ancillary Targets: Testing filler samples in Survey validation}. DESI Collaboration meeting, Ohio State University, December 2019.
-    \item \textit{LRG \& ELG Imaging systematic Trends} (with A. Raichoor). DESI virtual collaboration meeting, March 2020.
-\end{etaremune}
-% \\\multicolumn{2}{c}{} \\
-
-\end{tabular}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Publications
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Publications}
-\begin{center}
-    \textit{(3 lead author, 1 significant contributing author)\\}
-\end{center}
-
-\begin{tabular}{m{2.4cm} |m{0.3cm} m{15cm}}
- \emph{Refereed} & &  \begin{etaremune}
-    \item \textrm{\textit{Re-calibrating Photometric Redshift Probability Distributions Using Feature-space Regression}}. \textbf{B. Dey}, J. A. Newman, B. H. Andrews, et al., 2021, Fourth Workshop on Machine Learning and the Physical Sciences (NeurIPS 2021).
-    \item \textrm{\textit{The population of galaxies that contribute to the HI mass function}}. S Dutta, N Khandai and \textbf{B. Dey}, 2020, MNRAS, 494, 2.
-    \item \textrm{\textit{The EDGE-CALIFA survey: exploring the star formation law through variable selection}}. \textbf{B. Dey}, E. Rosolowsky, Y. Cao, et al., 2019, MNRAS, 488, 2.
-    \item \textrm{\textit{Study of geometric phase using classical coupled oscillators}}. S. Bhattacharjee, \textbf{B. Dey} and A.K. Mohapatra, 2018, Eur. J. Phys., 39, 035404.
-\end{etaremune}
- 
- 
- 
- \\\multicolumn{2}{c}{} \\
- \emph{Non-Refereed} & &
- \begin{etaremune}
-    \item \textrm{\textit{Preliminary Target Selection for the DESI Luminous Red Galaxy (LRG) Sample}}. R. Zhou, et al. [26 coauthors including \textbf{B. Dey}], 2020, RNAAS, 4, 10.
-    \item \textrm{\textit{Low-frequency detection of FRB180916 with the uGMRT}}. K. R. Sand, et al.[23 coauthors including \textbf{B. Dey}], 2020, ATel, 13781.
-\end{etaremune}
- \\\multicolumn{2}{c}{} \\
-
-\end{tabular}
 
 %Automatically put last updated
 \begin{center}
