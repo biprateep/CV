@@ -26,7 +26,7 @@ jobs:
     env:
       # Edit here with the names of your latex file and directory (can use ".")
       DIR: .
-      FILE: main.tex
+      FILE: main
     steps:
       - name: Checkout
         uses: actions/checkout@v2
