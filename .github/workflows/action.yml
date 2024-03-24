@@ -34,7 +34,7 @@ jobs:
       #   run: sudo apt update && sudo apt install -y latexmk texlive-latex-extra texlive-publishers texlive-science tlive-fonts-extra cm-super
       - name: LaTeX compile
         working-directory: ${{ env.DIR }}
-        run: latexmk -xelatex ${{ env.FILE }}
+        run: latexmk -lualatex ${{ env.FILE }}
         # run: pdflatex ${{ env.FILE }}; bibtex ${{ env.FILE }}; pdflatex ${{ env.FILE }}; pdflatex ${{ env.FILE }};
       - name: move
         run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
