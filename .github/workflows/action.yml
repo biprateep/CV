@@ -18,8 +18,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel  
 #Temporary fix as Github introduced an incompatibility
-env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
+
 jobs:
   build-pdf:
     runs-on: ubuntu-latest
@@ -27,6 +26,7 @@ jobs:
       image: blang/latex:ctanfull
     env:
       # Edit here with the names of your latex file and directory (can use ".")
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
       DIR: .
       FILE: main
     steps:
