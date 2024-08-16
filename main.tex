@@ -40,6 +40,28 @@
 \usepackage{longtable}
 \definecolor{orcidlogocol}{HTML}{A6CE39}
 
+% font loading
+% for luatex and xetex, do not use inputenc and fontenc
+% see https://tex.stackexchange.com/a/496643
+\ifxetexorluatex
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\setmathfont{Latin Modern Math}
+
+% you may also consider Fira Sans Light for a extra modern look
+%\setsansfont[ItalicFont={Fira Sans Light Italic},%
+%           BoldFont={Fira Sans},%
+%           BoldItalicFont={Fira Sans Italic}]%
+%           {Fira Sans Light}%
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\fi
 %%%%%%USE THIS TO HAVE PAGE NUMBERS %%%%
 \usepackage{lastpage}
 \rfoot{\addressfont\itshape\textcolor{gray}{Page \thepage\ of \pageref{LastPage}}}
