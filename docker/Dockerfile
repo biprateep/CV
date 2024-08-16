@@ -18,7 +18,7 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
 # Add TexLive to PATH
 ENV PATH="/usr/local/texlive/2024/bin/x86_64-linux:${PATH}"
 
-
+ENV HOME=/data
 VOLUME ["/data"]
 
 
