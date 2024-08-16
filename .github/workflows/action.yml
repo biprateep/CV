@@ -23,10 +23,10 @@ jobs:
   build-pdf:
     runs-on: ubuntu-latest
     container:
-      image: blang/latex:ctanfull
+      image: biprateep/texlive-full:latest
     env:
       # Edit here with the names of your latex file and directory (can use ".")
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
+      # ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
       DIR: .
       FILE: main
     steps:
