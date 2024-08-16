@@ -2,7 +2,7 @@
 # The latest compiled pdf is at available at e.g.
 # https://github.com/dgerosa/reponame/blob/build/filename.pdf
 # Davide Gerosa (2021) https://github.com/dgerosa
-# Updated by Biprateep (2022) Dey to deploy modern CV
+# Updated by Biprateep (2022 & 2024) Dey to deploy modern CV
 
 name: Build and deploy my CV
 # Controls when the workflow will run
@@ -26,14 +26,11 @@ jobs:
       image: biprateep/texlive-full:latest
     env:
       # Edit here with the names of your latex file and directory (can use ".")
-      # ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # https://github.com/actions/checkout/issues/1809
       DIR: .
       FILE: main
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # - name: Install TeXlive
-      #   run: sudo apt update && sudo apt install -y latexmk texlive-latex-extra texlive-publishers texlive-science tlive-fonts-extra cm-super
       - name: LaTeX compile
         working-directory: ${{ env.DIR }}
         run: latexmk -lualatex ${{ env.FILE }}
