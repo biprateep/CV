@@ -75,7 +75,9 @@
 \email{biprateep@pitt.edu}
 
 \homepage{biprateep.github.io}
-\newcommand*\orcidsocialsymbol{{\aiOrcid~}}
+\ifx\orcidsocialsymbol\undefined
+\newcommand*\orcidsocialsymbol {{\aiOrcid~}}
+\fi 
 \social[orcid][https://orcid.org/0000-0002-5665-7912]{0000-0002-5665-7912}
 \social[github]{biprateep} 
 
