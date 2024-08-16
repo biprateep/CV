@@ -1,0 +1,7 @@
+#!/bin/sh
+IMAGE=biprateep/texlive-full:latest
+exec docker run --rm -i --env HOME=/data --user="$(id -u):$(id -g)" --net=none -v "$PWD":/data "$IMAGE" "$@"
+
+#Script to locally compile using the docker container
+#./compile latexmk -lualatex main.tex
+
