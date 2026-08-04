@@ -1,0 +1,57 @@
+name: Update publications from ADS
+
+# Regenerates pub_contributing_author.tex (and the counts in main.tex) from
+# NASA ADS. Runs 30 min after the website's equivalent job so the two stay
+# roughly in step. Requires the repo secret ADS_API_TOKEN.
+#
+# Overleaf: this commits to main. Pull it into Overleaf via the GitHub sync
+# menu; never hand-edit pub_contributing_author.tex there.
+
+on:
+  schedule:
+    - cron: "30 6 * * 1" # every Monday 06:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write # to dispatch the PDF build below
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate publication list from ADS
+        env:
+          ADS_API_TOKEN: ${{ secrets.ADS_API_TOKEN }}
+        run: python bin/update_publications.py
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet pub_contributing_author.tex main.tex; then
+            echo "Publication list unchanged."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git add pub_contributing_author.tex main.tex
+            git commit -m "Auto-update contributing publications from ADS"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A push made with GITHUB_TOKEN does not trigger other workflows, so the
+      # PDF build has to be kicked off explicitly.
+      - name: Rebuild the CV PDF
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run action.yml --ref main
