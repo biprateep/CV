@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# LaTeX build artefacts (the PDF is published to the orphan `build` branch)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+main.pdf
